@@ -1,0 +1,11 @@
+function.map() 사용법
+
+const friends = ['dal', 'mark', 'lynn', 'kai']
+
+// function()안의 인자는 아무거나 줘도 됨(해당 이름으로 값들을 돌려줌)
+friends.map(function(friend) {
+    return friend + "❤";
+})
+
+>friends
+['dal❤', 'mark❤', 'lynn❤', 'kai❤']
