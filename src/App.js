@@ -41,15 +41,18 @@ const foodILike = [
   },
 ];
 
+function renderFood(dish) {
+  return <Food name={dish.name} picture={dish.image} />;
+}
+
 // name or fav(anything) = propname(property)
 // function App() 안에서 사용된 '<Food />컴포넌트'의 'property'를 function Food()의 argument(인자)로 넣어줌
 // map((dish)) <(dish)는 오브젝트(돌면서 순서대로 현재 처리 중)
 function App() {
   return (
     <div>
-      {foodILike.map((dish) => (
-        <Food name={dish.name} picture={dish.image} />
-      ))}
+      {console.log(foodILike.map(renderFood))}
+      {foodILike.map(renderFood)}
     </div>
   );
 }
