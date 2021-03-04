@@ -4,8 +4,13 @@ import React from "react";
 //   return <h1>I like {fav}</h1>;
 // }
 
-function Food(props) {
-  return <h1>I like {props.fav}</h1>;
+function Food({ name, picture }) {
+  return (
+    <div>
+      <h2>I like {name}</h2>
+      <img src={picture}></img>
+    </div>
+  );
 }
 
 const foodILike = [
@@ -38,10 +43,13 @@ const foodILike = [
 
 // name or fav(anything) = propname(property)
 // function App() 안에서 사용된 '<Food />컴포넌트'의 'property'를 function Food()의 argument(인자)로 넣어줌
+// map((dish)) <(dish)는 오브젝트(돌면서 순서대로 현재 처리 중)
 function App() {
   return (
     <div>
-      <h1>Hello!!!</h1>
+      {foodILike.map((dish) => (
+        <Food name={dish.name} picture={dish.image} />
+      ))}
     </div>
   );
 }
