@@ -1,41 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import axios from 'axios';
 
-// constructor는 javaScript
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('I am constructor');
-  }
   state = {
-    count: 0,
+    isLoading: true,
+    movies: [],
   };
-
-  add = () => {
-    this.setState((current) => ({ count: current.count + 1 }));
+  // async는 비동기 함수임을 알려주는 기능, await 요소가 끝날때까지 기다림
+  getMovies = async () => {
+    const movies = await axios.get('https://yts.mx/api/v2/list_movies.json');
   };
-  minus = () => {
-    this.setState((current) => ({ count: current.count - 1 }));
-  };
-
-  //기본적인 용도는 "이봐 이 component는 처음 render 됐어"
   componentDidMount() {
-    console.log('component rendered');
-  }
-
-  componentDidUpdate() {
-    console.log('I just Updated');
+    this.getMovies();
   }
 
   render() {
-    console.log('I am rendering');
-    return (
-      <div>
-        <h1>The number is {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
-    );
+    const { isLoading } = this.state;
+    return <div>{isLoading ? 'Loading' : 'We are ready'}</div>;
   }
 }
 
